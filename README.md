@@ -19,7 +19,7 @@
   caching-proxy --port <number> --origin <url>
 ```
 
-### Server
+### server
 ```bash
   cd server
   make run
