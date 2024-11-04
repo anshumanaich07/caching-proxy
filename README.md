@@ -5,19 +5,28 @@
 * Else, it forwards it to the actual server.
 
 ## Technologies 
-* Golang
+* Golang for backend
 * Memcached for caching
-* DB?? 
-
+* MongoDB for database
+ 
 ## TODO
-* Write an actual server 
 * Write a caching server 
-* what data to sent
 
 ## Run 
+### caching server
 ```bash
+  cd caching-server
   caching-proxy --port <number> --origin <url>
 ```
+
+### Server
+```bash
+  cd server
+  make run
+```
+
+
+
 ## Clear cache
 ```bash
   caching-proxy --clear-cache
