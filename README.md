@@ -10,6 +10,7 @@
 * MongoDB for database
  
 ## TODO
+* Change the execution method of both the servers
 * Write a caching server 
 
 ## Run 
