@@ -9,10 +9,6 @@
 * Redis for caching
 * MongoDB for database
  
-## TODO
-- [ ] Change the execution method of both the servers
-- [X] Write a caching server 
-- [ ] Refactor the caching server where it checks for cache miss
 
 ## Run 
 ### caching server
@@ -27,8 +23,6 @@
   make run
 ```
 
-
-
 ## Clear cache
 ```bash
   caching-proxy --clear-cache
@@ -38,3 +32,8 @@
 * `--origin`: URL of the main server, to which the requests will be forwarded to
 * `--clear-cache`: Clears the cache
 
+
+## TODO
+- [ ] Change the execution method of both the servers
+- [X] Write a caching server 
+- [ ] Refactor the caching server where it checks for cache miss
