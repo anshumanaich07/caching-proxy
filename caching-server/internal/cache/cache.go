@@ -11,8 +11,8 @@ import (
 
 func GetRedis(cfg config.Config) (*redis.Client, error) {
 	client := redis.NewClient(&redis.Options{
-		Addr:     fmt.Sprintf("%s:%d", cfg.Address, cfg.Port),
-		Password: cfg.Password,
+		Addr:     fmt.Sprintf("%s:%d", cfg.Redis.Address, cfg.Redis.Port),
+		Password: cfg.Redis.Password,
 		DB:       0,
 	})
 

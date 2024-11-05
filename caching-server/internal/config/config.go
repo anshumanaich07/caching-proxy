@@ -6,9 +6,15 @@ import (
 )
 
 type Config struct {
-	Address  string `mapstructure:"address"`
-	Password string `mapstructure:"password"`
-	Port     int    `mapstructure:"port"`
+	Server struct {
+		Address string `mapstructure:"address"`
+		Port    int    `mapstructure:"port"`
+	} `mapstructure:"server"`
+	Redis struct {
+		Address  string `mapstructure:"address"`
+		Password string `mapstructure:"password"`
+		Port     int    `mapstructure:"port"`
+	} `mapstructure:"redis"`
 }
 
 func GetConfig() (*Config, error) {

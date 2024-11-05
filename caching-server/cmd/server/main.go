@@ -1,10 +1,12 @@
 package main
 
 import (
+	"caching-server/internal/api/routes"
 	"caching-server/internal/cache"
 	"caching-server/internal/config"
 	"fmt"
 	"log"
+	"net/http"
 )
 
 func main() {
@@ -18,5 +20,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(rds)
+	// router
+	router := routes.InitRouter(rds)
+	addr := fmt.Sprintf("%s:%d", cfg.Server.Address, cfg.Server.Port)
+	log.Println("Caching server started...")
+	log.Fatal(http.ListenAndServe(addr, router))
 }

@@ -1,5 +1,11 @@
 {
-	"host": "localhost",
-	"password": "",
-	"port": 8080
+	"server": {
+		"host": "localhost",
+		"port": 8080
+	}, 
+	"redis": {
+		"host": "localhost",
+		"port": 6379,
+		"password": ""
+	}
 }
