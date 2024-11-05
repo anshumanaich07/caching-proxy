@@ -10,8 +10,9 @@
 * MongoDB for database
  
 ## TODO
-* Change the execution method of both the servers
-* Write a caching server 
+- [] Change the execution method of both the servers
+- [X] Write a caching server 
+- [] Refactor the caching server where it checks for cache miss
 
 ## Run 
 ### caching server
