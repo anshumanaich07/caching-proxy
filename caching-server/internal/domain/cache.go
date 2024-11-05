@@ -1,9 +1,11 @@
 package domain
 
+import "context"
+
 type CacheUsecase interface {
-	Get(key string) map[string]interface{}
+	Get(ctx context.Context, key string) (map[string]interface{}, error)
 }
 
 type CacheRepository interface {
-	Get(key string) map[string]interface{}
+	Get(ctx context.Context, key string) (map[string]interface{}, error)
 }
