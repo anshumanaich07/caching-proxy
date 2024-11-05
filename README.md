@@ -6,7 +6,7 @@
 
 ## Technologies 
 * Golang for backend
-* Memcached for caching
+* Redis for caching
 * MongoDB for database
  
 ## TODO
