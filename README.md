@@ -34,6 +34,7 @@
 
 
 ## TODO
+- [ ] Add mechanism to clear cache
 - [ ] Change the execution method of both the servers
 - [X] Write a caching server 
 - [X] Refactor the caching server where it checks for cache miss
