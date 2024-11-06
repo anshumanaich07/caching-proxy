@@ -14,7 +14,7 @@
 ### caching server
 ```bash
   cd caching-server
-  caching-proxy --port <number> --origin <url>
+  make run
 ```
 
 ### server
