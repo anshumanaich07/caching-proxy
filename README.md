@@ -35,6 +35,7 @@
 
 ## TODO
 - [ ] Add mechanism to clear cache
+- [ ] Add flags on startup for both the servers
 - [ ] Change the execution method of both the servers
 - [X] Write a caching server 
 - [X] Refactor the caching server where it checks for cache miss
