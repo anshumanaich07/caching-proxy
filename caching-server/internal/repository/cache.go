@@ -7,17 +7,21 @@ import (
 	"io"
 	"net/http"
 
+	servConf "server/pkg/config"
+
 	"github.com/pkg/errors"
 	"github.com/redis/go-redis/v9"
 )
 
 type cacheRepository struct {
-	cache *redis.Client
+	cache        *redis.Client
+	serverConfig *servConf.Config
 }
 
-func NewCacheRepository(c *redis.Client) cacheRepository {
+func NewCacheRepository(c *redis.Client, sc *servConf.Config) cacheRepository {
 	return cacheRepository{
-		cache: c,
+		cache:        c,
+		serverConfig: sc,
 	}
 }
 
@@ -39,12 +43,12 @@ func (repo cacheRepository) Get(ctx context.Context, key string) (map[string]int
 		cacheHit = true
 	}
 
-	fmt.Println("cache hit: ", cacheHit)
-
-	// cache hit false, means hit the main server
+	// cache miss
 	if !cacheHit {
-		// TODO: get from config, don't hard code
-		api := fmt.Sprintf("http://localhost:8080/%s", key)
+		api := fmt.Sprintf("%s:%d/%s",
+			repo.serverConfig.Server.Host,
+			repo.serverConfig.Server.Port,
+			key)
 		res, err := http.Get(api)
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to fetch data from main server")
@@ -56,7 +60,7 @@ func (repo cacheRepository) Get(ctx context.Context, key string) (map[string]int
 		if err = json.Unmarshal([]byte(string(body)), &resMap); err != nil {
 			return nil, errors.Wrap(err, "unable to unmarshal into map")
 		}
-		// put in cache
+		// set in cache
 		bytes, err := json.Marshal(resMap)
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to marshal")
