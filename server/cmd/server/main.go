@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 	"server/internal/api/routes"
-	"server/internal/config"
 	"server/internal/database"
+	"server/pkg/config"
 )
 
 func main() {

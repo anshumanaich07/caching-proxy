@@ -3,7 +3,7 @@ package database
 import (
 	"context"
 	"fmt"
-	"server/internal/config"
+	"server/pkg/config"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
