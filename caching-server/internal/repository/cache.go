@@ -1,27 +1,26 @@
 package repository
 
 import (
+	"caching-server/internal/config"
 	"context"
 	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 
-	servConf "server/pkg/config"
-
 	"github.com/pkg/errors"
 	"github.com/redis/go-redis/v9"
 )
 
 type cacheRepository struct {
-	cache        *redis.Client
-	serverConfig *servConf.Config
+	cache  *redis.Client
+	config *config.Config
 }
 
-func NewCacheRepository(c *redis.Client, sc *servConf.Config) cacheRepository {
+func NewCacheRepository(c *redis.Client, sc *config.Config) cacheRepository {
 	return cacheRepository{
-		cache:        c,
-		serverConfig: sc,
+		cache:  c,
+		config: sc,
 	}
 }
 
@@ -45,10 +44,12 @@ func (repo cacheRepository) Get(ctx context.Context, key string) (map[string]int
 
 	// cache miss
 	if !cacheHit {
-		api := fmt.Sprintf("%s:%d/%s",
-			repo.serverConfig.Server.Host,
-			repo.serverConfig.Server.Port,
+		api := fmt.Sprintf("%s:%d/%s/%s",
+			repo.config.OriginHost,
+			repo.config.OriginPort,
+			"employee",
 			key)
+		fmt.Println("api called: ", api)
 		res, err := http.Get(api)
 		if err != nil {
 			return nil, errors.Wrap(err, "unable to fetch data from main server")

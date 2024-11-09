@@ -25,5 +25,6 @@ func main() {
 	// init router
 	router := routes.InitRouter(db)
 	addr := fmt.Sprintf("%s:%d", config.Server.Host, config.Server.Port)
+  fmt.Println("Origin server running on: :", addr)
 	log.Fatal(http.ListenAndServe(addr, router))
 }

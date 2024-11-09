@@ -33,5 +33,9 @@ func GetConfig() (*Config, error) {
 		return nil, errors.Wrap(err, "unable to unmarshal config")
 	}
 
+	if config.Server.Host == "" || config.Server.Port == 0 {
+		return nil, errors.New("server host or address cannot be empty")
+	}
+
 	return config, nil
 }

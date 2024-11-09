@@ -2,13 +2,10 @@ module caching-server
 
 go 1.22.0
 
-replace server => /home/anshuman/Documents/learning/caching-proxy/server
-
 require (
 	github.com/pkg/errors v0.9.1
 	github.com/redis/go-redis/v9 v9.7.0
 	github.com/spf13/viper v1.19.0
-	server v0.0.0-00010101000000-000000000000
 )
 
 require (
