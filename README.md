@@ -16,16 +16,17 @@
   cd caching-proxy
   make run ARGS="--port 8080 --origin localhost"
 ```
-## Clear cache
-```bash
-  cd caching-proxy
-  make run ARGS="--clear" 
-```
 
 ### server
 ```bash
   cd server
   make run
+```
+
+## Clear cache
+```bash
+  cd caching-proxy
+  make run ARGS="--clear" 
 ```
 
 
