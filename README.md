@@ -13,8 +13,13 @@
 ## Run 
 ### caching server
 ```bash
-  cd caching-server
-  make run
+  cd caching-proxy
+  make run ARGS="--port 8080 --origin localhost"
+```
+## Clear cache
+```bash
+  cd caching-proxy
+  make run ARGS="--clear" 
 ```
 
 ### server
@@ -23,14 +28,10 @@
   make run
 ```
 
-## Clear cache
-```bash
-  caching-proxy --clear-cache
-```
 
-* `--port`: Port of the caching server
+* `--port`: Port of the origin server
 * `--origin`: URL of the main server, to which the requests will be forwarded to
-* `--clear-cache`: Clears the cache
+* `--clear`: Clears the cache
 
 
 ## TODO
