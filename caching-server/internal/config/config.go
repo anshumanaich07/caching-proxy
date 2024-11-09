@@ -16,6 +16,7 @@ type Config struct {
 		Port     int    `mapstructure:"port"`
 	} `mapstructure:"redis"`
 	OriginHost string
+	IsClear    bool
 	OriginPort int
 }
 

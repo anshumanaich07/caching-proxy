@@ -26,7 +26,6 @@ func (controller cacheController) GetEmployeeByID(w http.ResponseWriter, r *http
 		ctx = r.Context()
 	}
 
-	fmt.Println("reached the caching server")
 	id := r.PathValue("id")
 	if id == "" {
 		http.Error(w, "Missing 'id parameter", http.StatusBadRequest)
